@@ -16,13 +16,7 @@
         <% else %>
             <source src="/api/manifest/dash/id/<%= video.id %>?local=true" type='application/dash+xml' label="dash">
 
-            <% fmt_stream.each_with_index do |fmt, i| %>
-                <% if params[:quality] %>
-                <source src="/latest_version?id=<%= video.id %>&itag=<%= fmt["itag"] %><% if params[:local] %>&local=true<% end %>" type='<%= fmt["type"] %>' label="<%= fmt["label"] %>" selected="<%= params[:quality] == fmt["label"].split(" - ")[0] %>">
-                <% else %>
-                <source src="/latest_version?id=<%= video.id %>&itag=<%= fmt["itag"] %><% if params[:local] %>&local=true<% end %>" type='<%= fmt["type"] %>' label="<%= fmt["label"] %>" selected="<%= i == 0 ? true : false %>">
-                <% end %>
-            <% end %>
+
         <% end %>
 
         <% preferred_captions.each_with_index do |caption, i| %>
